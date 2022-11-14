@@ -50,3 +50,7 @@ setfacl -m u:libvirt-qemu:rx /home/$USER
 setfacl -R -m u:libvirt-qemu:rx /home/$USER/OSX-KVM
 setfacl -R -m u:libvirt-qemu:rx /home/$USER
 
+sed "s/CHANGEME/$USER/g" macOS-libvirt-Catalina.xml > macOS.xml
+virt-xml-validate macOS.xml
+virsh --connect qemu:///system define macOS.xml
+virt-manager

@@ -62,7 +62,7 @@
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' cache='writeback' io='threads'/>
-      <source file='/home/root/OSX-KVM/OpenCore/OpenCore.qcow2'/>
+      <source file='/home/root/OSX-KVM/OpenCore/OpenCore.debug.qcow2'/>
       <target dev='sda' bus='sata'/>
       <boot order='2'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
@@ -161,7 +161,7 @@
       <listen type='address'/>
     </graphics>
     <video>
-      <model type="vga" vram="65536" heads="1" primary="yes"/>
+      <model type="vga" vram="131072" heads="1" primary="yes"/>
     </video>
     <!-- If you wanna passthrough GPU, make sure the gfx and audio are in the same bus (like 0x01) but different function (0x00 and 0x01)-->
     <!-- <hostdev mode='subsystem' type='pci' managed='yes'>
@@ -201,8 +201,6 @@
     <qemu:arg value='usb-tablet'/>
     <qemu:arg value='-device'/>
     <qemu:arg value='usb-kbd'/>
-    <qemu:arg value='-cpu'/>
-    <qemu:arg value='Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,+ssse3,+sse4.2,+popcnt,+avx,+aes,+xsave,+xsaveopt,check,-v keepsyms=1'/>
     <!-- <qemu:arg value='Penryn,vendor=GenuineIntel,+hypervisor,+invtsc,kvm=on,+fma,+avx,+avx2,+aes,+ssse3,+sse4_2,+popcnt,+sse4a,+bmi1,+bmi2'/> -->
     <!-- If you wanna use cpu host-passthrough mode, uncomments below-->
     <!-- <qemu:arg value='host,vendor=GenuineIntel,+hypervisor,+invtsc,kvm=on,+fma,+avx,+avx2,+aes,+ssse3,+sse4_2,+popcnt,+sse4a,+bmi1,+bmi2'/> -->
