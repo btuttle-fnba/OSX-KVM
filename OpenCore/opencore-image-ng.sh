@@ -4,11 +4,11 @@
 
 ######################################################################
 # defaults
-
-iso=""
-img=""
-cfg=""
-
+BASE="$(dirname $0)"
+iso="$BASE/OpenCore.new.iso"
+img="$BASE/OpenCore.new.qcow2"
+cfg="$BASE/config.plist"
+allow_override="yes"
 ######################################################################
 # create work dir
 
