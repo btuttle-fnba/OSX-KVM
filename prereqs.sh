@@ -26,7 +26,6 @@ brctl addif virbr0 tap0
 ip link set dev virbr0 up
 ip link set dev tap0 master virbr0' >> /etc/rc.local
 mkdir /home/$USER 2> /dev/null
-ln -s ./OSX-KVM /home/$USER/OSX-KVM
 systemctl enable rc-local
 echo 1 | tee /sys/module/kvm/parameters/ignore_msrs
 cp kvm.conf /etc/modprobe.d/kvm.conf  
@@ -50,7 +49,7 @@ setfacl -m u:libvirt-qemu:rx /home/$USER
 setfacl -R -m u:libvirt-qemu:rx /home/$USER/OSX-KVM
 setfacl -R -m u:libvirt-qemu:rx /home/$USER
 
-sed "s/CHANGEME/$USER/g" macOS-libvirt-Catalina.xml > macOS.xml
+sed "s/CHANGEME/$USER/g" macOS-libvirt-Catalina.xml > macOS.new.xml
 virt-xml-validate macOS.xml
 virsh --connect qemu:///system define macOS.xml
 virt-manager
